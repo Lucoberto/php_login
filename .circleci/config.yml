@@ -21,7 +21,7 @@ jobs:
       - run: echo adios de verdad
 
 # los workflow son espacios donde se ejecutaran los jobs que definamos
-workflow:
+workflows:
   firstworkflow:
     jobs:
       - saluda
