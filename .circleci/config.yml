@@ -31,7 +31,7 @@ workflow:
   secondworkflow:
     jobs:
       - saluda
-      - despidete
+      - despidete:
           # Requires fuerza la dependencia del otro en caso de fallo en segundo no se ejecuta
           requires:
             - saluda
