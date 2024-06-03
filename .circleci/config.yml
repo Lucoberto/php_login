@@ -39,3 +39,17 @@ workflows:
   thirdworkflow:
     jobs:
       - saluda
+# Aprobacion manual
+  fourthworkflow:
+    jobs:
+      - saluda
+      # Aprobacion manual
+      - approval:
+          type: approval
+          # Si no se ejecuta saluda correctamente no se permite aprobar
+          requires:
+            - saluda
+      # Se ejecuta cuando la aprobacion se confirme correctamente
+      - despidete:
+          requires:
+            - approval
