@@ -14,7 +14,7 @@ jobs:
   # Se pueden defini varias tareas
   despidete:
     docker:
-      - imagen: cimg/base:stable
+      - image: cimg/base:stable
     steps:
       # Se pueden ejecutar varios pasos
       - run: echo adios
