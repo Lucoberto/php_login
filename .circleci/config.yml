@@ -28,7 +28,6 @@ workflow:
       - despidete
 
 # Puedes definir varios workflows
-workflow:
   secondworkflow:
     jobs:
       - saluda
@@ -36,8 +35,7 @@ workflow:
           # Requires fuerza la dependencia del otro en caso de fallo en segundo no se ejecuta
           requires:
             - saluda
-
-workflow:
+# Ejecutando solo un workflow
   thirdworkflow:
     jobs:
       - saluda
