@@ -17,8 +17,8 @@ jobs:
       - imagen: cimg/base:stable
     steps:
       # Se pueden ejecutar varios pasos
-      - run: adios
-      - run: adios de verdad
+      - run: echo adios
+      - run: echo adios de verdad
 
 # los workflow son espacios donde se ejecutaran los jobs que definamos
 workflow:
