@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<equipment>
+    <printer date_of_purchase="2023-05-15" place_of_purchase="PcComponentes" image="./assets/printer.jpg">
+        <brand>Epson</brand>
+        <model>EcoTank L3150</model>
+        <type>Inkjet</type>
+        <color>Color</color>
+        <speed>33 ppm</speed>
+        <resolution>5760 x 1440 dpi</resolution>
+    </printer>
+    <printer date_of_purchase="2023-07-20" place_of_purchase="Amazon" image="./assets/printer.jpg">
+        <brand>HP</brand>
+        <model>OfficeJet Pro 9015</model>
+        <type>Inkjet</type>
+        <color>Color</color>
+        <speed>22 ppm</speed>
+        <resolution>1200 x 1200 dpi</resolution>
+    </printer>
+    <projector date_of_purchase="2023-06-10" place_of_purchase="MediaMarkt" image="./assets/projector.jpg">
+        <brand>BenQ</brand>
+        <model>TH671ST</model>
+        <resolution>Nativa Full HD (1920 x 1080)</resolution>
+        <brillo>3000 lúmenes</brillo>
+        <tecnologia>DLP</tecnologia>
+    </projector>
+    <projector date_of_purchase="2023-08-05" place_of_purchase="El Corte Inglés" image="./assets/projector.jpg">
+        <brand>Epson</brand>
+        <model>Home Cinema 2150</model>
+        <resolution>Full HD (1920 x 1080)</resolution>
+        <brillo>2500 lúmenes</brillo>
+        <tecnologia>3LCD</tecnologia>
+    </projector>
+    <scanner date_of_purchase="2023-07-25" place_of_purchase="Fnac" image="./assets/scanner.jpg">
+        <brand>Canon</brand>
+        <model>CanoScan LiDE 400</model>
+        <type>Escáner plano</type>
+        <resolution>4800 x 4800 dpi</resolution>
+        <profundidad_color>48 bits</profundidad_color>
+    </scanner>
+    <scanner date_of_purchase="2023-09-10" place_of_purchase="MediaMarkt" image="./assets/scanner.jpg">
+        <brand>Brother</brand>
+        <model>DS-940DW</model>
+        <type>Portable scanner</type>
+        <resolution>600 x 600 dpi</resolution>
+        <profundidad_color>24 bits</profundidad_color>
+    </scanner>
+</equipment>

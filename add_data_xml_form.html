@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP</title>
+    <!-- Llamada a JQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <form id="add_data_xml" action="./inventory/xml_add_data.php" method="post" >
+        <h2>Select data</h2>
+        <select id="selection" name="selection" onchange="hidde()">
+            <option value="printer">Printer</option>
+            <option value="projector">Projector</option>
+            <option value="scanner">Scanner</option>
+        </select>
+        <a>Brand: <input type="text" name="brand"></a>
+        <a>Model: <input type="text" name="model"></a>
+        <a>Resolution: <input type="text" name="resolution"></a>
+        <a id="color">Color: <input type="text" name="color"></a>
+        <a>Speed: <input id="speed" type="text" name="speed"></a>
+        <a>Brillo: <input id="brillo" type="text" name="brillo"></a>
+        <a>Tecnologia: <input id="tecnologia" type="text" name="tecnologia"></a>
+        <a>Type: <input id="type" type="text" name="type"></a>
+        <a>Profundidad del color: <input id="profundidad_color" type="text" name="profundidad_color"></a>
+        <input type="submit" value="add">
+    </form>
+
+    <script>
+        function hidde(){
+            var selection = document.getElementById("selection");
+            var test = document.getElementById("color");
+
+            switch (selection.value) {
+                case 'printer':
+                    color.style.display = "inline";
+                    break;
+                case'projector':
+                    color.style.display = "none";
+                    break;
+                case 'scanner':
+                    color.style.display = "none";
+                    break;
+
+                default:
+                    break;
+            }
+        };
+    </script>
+</body>
+</html>
