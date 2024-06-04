@@ -27,6 +27,7 @@ workflows:
       - saluda
       - despidete
 
+
 # Puedes definir varios workflows
   secondworkflow:
     jobs:
@@ -35,10 +36,12 @@ workflows:
           # Requires fuerza la dependencia del otro en caso de fallo en segundo no se ejecuta
           requires:
             - saluda
+
 # Ejecutando solo un workflow
   thirdworkflow:
     jobs:
       - saluda
+
 # Aprobacion manual
   fourthworkflow:
     jobs:
@@ -53,3 +56,22 @@ workflows:
       - despidete:
           requires:
             - approval
+
+  # Automatizar despliegue cada cierto tiempo
+  programmedjob:
+    triggers:
+      # Trigger de forma programada
+      - schedule:
+            # Expresion cron esto automatiza un proceso
+            cron: "20 10 * * *"
+            # Filtrar por branches
+            filters:
+              branches:
+                only:
+                  main
+
+    jobs:
+      - saluda
+      - despidete:
+          requires:
+            - saluda
