@@ -31,7 +31,7 @@ jobs:
       - run: echo adios
       - run: echo adios de verdad
    # Parametros a nivel de Job
-   name:
+  helloname:
     parameters:
       newname:
         type: string
@@ -46,14 +46,14 @@ jobs:
 workflows:
   paramworkflow:
     jobs:
-      - name
+      - helloname
       - saluda
       - despidete:
           requires:
-            - name
+            - helloname
             - saluda
 
   parametersworkflow:
     jobs:
-      - name:
+      - helloname:
           newname: juan
