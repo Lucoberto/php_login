@@ -1,5 +1,15 @@
 version: 2.1
 
+# Los parametros nos da la flexibilidad de dar diferentes valores 
+# esto nos permite que se ejecute de foma diferente segun el valor
+parameters:
+  # Nombre del parametro
+  nombre:
+    # Tipo de parametro
+    type: string
+    # Valor por defecto
+    default: log
+
 # los jobs son tareas que se ejecutan cuando son llamadas
 jobs:
   # Nombre de la tarea
@@ -10,7 +20,8 @@ jobs:
       - image: cimg/base:stable
     # Los pasos que va a ejecutar
     steps:
-      - run: echo hello
+      # Es pipline.parammeteres ya que es un parametro definido en el pipeline se define '<<>>'
+      - run: echo hello << pipeline.parammeters.nombre >>
   # Se pueden defini varias tareas
   despidete:
     docker:
@@ -20,58 +31,9 @@ jobs:
       - run: echo adios
       - run: echo adios de verdad
 
-# los workflow son espacios donde se ejecutaran los jobs que definamos
 workflows:
-  firstworkflow:
-    jobs:
-      - saluda
-      - despidete
-
-
-# Puedes definir varios workflows
-  secondworkflow:
-    jobs:
-      - saluda
-      - despidete:
-          # Requires fuerza la dependencia del otro en caso de fallo en segundo no se ejecuta
-          requires:
-            - saluda
-
-# Ejecutando solo un workflow
-  thirdworkflow:
-    jobs:
-      - saluda
-
-# Aprobacion manual
-  fourthworkflow:
-    jobs:
-      - saluda
-      # Aprobacion manual
-      - approval:
-          type: approval
-          # Si no se ejecuta saluda correctamente no se permite aprobar
-          requires:
-            - saluda
-      # Se ejecuta cuando la aprobacion se confirme correctamente
-      - despidete:
-          requires:
-            - approval
-
-  # Automatizar despliegue cada cierto tiempo
-  programmedjob:
-    triggers:
-      # Trigger de forma programada
-      - schedule:
-            # Expresion cron esto automatiza un proceso
-            cron: "20 10 * * *"
-            # Filtrar por branches
-            filters:
-              branches:
-                only:
-                  main
-
-    jobs:
-      - saluda
-      - despidete:
-          requires:
-            - saluda
+  jobs:
+    - saluda
+    - despidete:
+        requires:
+          - saluda
