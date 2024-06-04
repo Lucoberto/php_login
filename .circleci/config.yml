@@ -46,7 +46,9 @@ jobs:
 workflows:
   paramworkflow:
     jobs:
-      - helloname
+      - helloname:
+          # Le podemos dar nombre al job usando la palabra reservada name:
+          name: hello
       - saluda
       - despidete:
           requires:
