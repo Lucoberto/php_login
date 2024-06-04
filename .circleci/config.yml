@@ -32,8 +32,9 @@ jobs:
       - run: echo adios de verdad
 
 workflows:
-  jobs:
-    - saluda
-    - despidete:
-        requires:
-          - saluda
+  paramworkflow:
+    jobs:
+      - saluda
+      - despidete:
+          requires:
+            - saluda
