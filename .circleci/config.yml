@@ -20,8 +20,8 @@ jobs:
       - image: cimg/base:stable
     # Los pasos que va a ejecutar
     steps:
-      # Es pipline.parammeteres ya que es un parametro definido en el pipeline se define '<<>>'
-      - run: echo hello << pipeline.parammeters.nombre >>
+      # Es pipline.parameters ya que es un parametro definido en el pipeline se define '<<>>'
+      - run: echo hello << pipeline.parameters.nombre >>
   # Se pueden defini varias tareas
   despidete:
     docker:
