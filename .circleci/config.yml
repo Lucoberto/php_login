@@ -30,11 +30,30 @@ jobs:
       # Se pueden ejecutar varios pasos
       - run: echo adios
       - run: echo adios de verdad
+   # Parametros a nivel de Job
+   name:
+    parameters:
+      newname:
+        type: string
+        default: pako
+    docker:
+      - image: cimg/base:stable
+    steps:
+      # Como es un paratro a nivel de job solo se pone parameters
+      - run: echo hello << parameters.newname >>
+
 
 workflows:
   paramworkflow:
     jobs:
+      - name
       - saluda
       - despidete:
           requires:
+            - name
             - saluda
+
+  parametersworkflow:
+    jobs:
+      - name:
+          newname: juan
