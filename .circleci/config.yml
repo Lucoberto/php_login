@@ -50,7 +50,7 @@ workflows:
       - saluda
       - despidete:
           requires:
-            - helloname
+            - hello
             - saluda
 
   parametersworkflow:
