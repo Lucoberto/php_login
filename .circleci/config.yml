@@ -1,19 +1,40 @@
 version: 2.1
-# Los jobs son tareas que se ejecutan cuando son llamadas
-jobs:
-  # Nombre de la tarea
-  saluda:
-    # El entorno donde se ejecuta
-    docker:
-      # Se pueden usar imagenes de DockerHub aunque esto puede consumir mas creditos 
-      - image: ubuntu:latest
-    # Los pasos que va a ejecutar
+
+# Parameters
+parameters:
+  newname:
+    type: string
+    default: Pako
+
+# Comandos reutilizables
+commands:
+  # Nombre del comando
+  fecha_hora:
     steps:
-      - run: echo hello
+      - run: date && sleep 10
+
+jobs:
+  hello:
+    docker:
+      - image: ubuntu:latest
+    steps:
+      # Llamada al comando por nombre
+      - fecha_hora
+      - run: echo Hello
+      - fecha_hora
+  bye:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      # Variable a nivel pipline
+      - run: echo Hello << pipeline.parameters.newname >>
 
 workflows:
-  newimage:
+  say_hello:
     jobs:
-      - saluda:
-          # Le podemos dar nombre al job usando la palabra reservada name:
-          name: hello
+      - hello:
+          name: say_hello
+      - bye:
+          name: say_bye
+          required:
+            - hello
