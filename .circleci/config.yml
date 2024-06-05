@@ -8,10 +8,18 @@ parameters:
 
 # Comandos reutilizables
 commands:
+  # Parametrizar comandos
+  parameters:
+    time:
+      type: integer
+      default: 5
   # Nombre del comando
   fecha_hora:
     steps:
       - run: date && sleep 10
+  say_hi:
+    steps:
+      - run: echo << parameters.time >>
 
 jobs:
   hello:
@@ -28,6 +36,8 @@ jobs:
     steps:
       # Variable a nivel pipline
       - run: echo Hello << pipeline.parameters.newname >>
+      - say_hi:
+          time: 10
 
 workflows:
   say:
