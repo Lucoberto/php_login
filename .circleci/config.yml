@@ -36,5 +36,5 @@ workflows:
           name: say_hello
       - bye:
           name: say_bye
-          required:
+          requires:
             - say_hello
