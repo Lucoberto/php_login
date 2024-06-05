@@ -30,11 +30,11 @@ jobs:
       - run: echo Hello << pipeline.parameters.newname >>
 
 workflows:
-  say_hello:
+  say:
     jobs:
       - hello:
           name: say_hello
       - bye:
           name: say_bye
           required:
-            - hello
+            - say_hello
