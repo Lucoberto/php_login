@@ -1,9 +1,9 @@
 version: 2.1
 
 commads:
-  install-cli:
+  install-aws-cli:
     steps:
-      - run: echo istall cli
+      - run: echo instalando cli
       # Descarga todo el repo donde este
       # - checkout
 
@@ -12,10 +12,10 @@ jobs:
     docker:
       - image: cimg/base:stable
     steps:
-      - install-cli
+      - install-aws-cli
       # Puede ser un step del Job o de un comando
       - checkout
-      - run: ls -lha
+      - run: ls -la
 
 workflows:
   install-workflow:
