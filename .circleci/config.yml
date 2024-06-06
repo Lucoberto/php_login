@@ -10,7 +10,7 @@ parameters:
 commands:
   # Parametrizar comandos
   parameters:
-    time:
+    timenumber:
       type: integer
       default: 5
   # Nombre del comando
@@ -19,7 +19,7 @@ commands:
       - run: date && sleep 10
   say_hi:
     steps:
-      - run: echo << parameters.time >>
+      - run: echo << parameters.timenumber >>
 
 jobs:
   hello:
@@ -37,7 +37,7 @@ jobs:
       # Variable a nivel pipline
       - run: echo Hello << pipeline.parameters.newname >>
       - say_hi:
-          time: 10
+          timenumber: 10
 
 workflows:
   say:
