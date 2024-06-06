@@ -8,18 +8,23 @@ parameters:
 
 # Comandos reutilizables
 commands:
-  # Parametrizar comandos
-  parameters:
-    timenumber:
-      type: integer
-      default: 5
   # Nombre del comando
-  fecha_hora:
+  say_date:
+    # Parametrizar comandos
+    parameters:
+      timenumber:
+        type: integer
+        default: 5
     steps:
-      - run: date && sleep 10
+      - run: data && slep 10
+
   say_hi:
-    steps:
-      - run: echo << parameters.timenumber >>
+    parameters:
+      timenumber:
+        type: integer
+        default: 5
+      steps:
+        - run: echo << parameters.timenumber >>
 
 jobs:
   hello:
@@ -27,9 +32,9 @@ jobs:
       - image: ubuntu:latest
     steps:
       # Llamada al comando por nombre
-      - fecha_hora
+      - say_date
       - run: echo Hello
-      - fecha_hora
+      - say_date
   bye:
     docker:
       - image: cimg/base:stable
