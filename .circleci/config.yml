@@ -16,15 +16,15 @@ commands:
         type: integer
         default: 5
     steps:
-      - run: data && slep 10
+      - run: date && sleep 10
 
   say_hi:
     parameters:
       timenumber:
         type: integer
         default: 5
-      steps:
-        - run: echo << parameters.timenumber >>
+    steps:
+      - run: echo << parameters.timenumber >>
 
 jobs:
   hello:
@@ -35,11 +35,12 @@ jobs:
       - say_date
       - run: echo Hello
       - say_date
+
   bye:
     docker:
       - image: cimg/base:stable
     steps:
-      # Variable a nivel pipline
+      # Variable a nivel pipeline
       - run: echo Hello << pipeline.parameters.newname >>
       - say_hi:
           timenumber: 10
