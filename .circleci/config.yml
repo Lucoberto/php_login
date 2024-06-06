@@ -1,56 +1,22 @@
 version: 2.1
 
-# Parameters
-parameters:
-  newname:
-    type: string
-    default: Pako
-
-# Comandos reutilizables
-commands:
-  # Nombre del comando
-  say_date:
-    # Parametrizar comandos
-    parameters:
-      timenumber:
-        type: integer
-        default: 5
-    steps:
-      - run: date && sleep 10
-
-  say_hi:
-    parameters:
-      timenumber:
-        type: integer
-        default: 5
-    steps:
-      - run: echo << parameters.timenumber >>
+commads:
+  install-cli:
+    - run: echo istall cli
+    # Descarga todo el repo donde este
+    # - checkout
 
 jobs:
-  hello:
-    docker:
-      - image: ubuntu:latest
-    steps:
-      # Llamada al comando por nombre
-      - say_date
-      - run: echo Hello
-      - say_date
-
-  bye:
+  install-dependecies:
     docker:
       - image: cimg/base:stable
     steps:
-      # Variable a nivel pipeline
-      - run: echo Hello << pipeline.parameters.newname >>
-      - say_hi:
-          timenumber: 10
+      - install-cli
+      # Puede ser un step del Job o de un comando
+      - checkout
+      - run: ls -lha
 
-workflows:
-  say:
+workflow:
+  install-workflow:
     jobs:
-      - hello:
-          name: say_hello
-      - bye:
-          name: say_bye
-          requires:
-            - say_hello
+      - install-dependencies
