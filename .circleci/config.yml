@@ -7,7 +7,7 @@ commads:
     # - checkout
 
 jobs:
-  install-dependecies:
+  install-dependencies:
     docker:
       - image: cimg/base:stable
     steps:
