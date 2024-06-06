@@ -2,9 +2,10 @@ version: 2.1
 
 commads:
   install-cli:
-    - run: echo istall cli
-    # Descarga todo el repo donde este
-    # - checkout
+    steps:
+      - run: echo istall cli
+      # Descarga todo el repo donde este
+      # - checkout
 
 jobs:
   install-dependencies:
