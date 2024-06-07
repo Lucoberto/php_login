@@ -23,3 +23,5 @@ workflows:
     jobs:
       - saluda:
           name: un_saludo
+          # Obteniendo variables de un contexto
+          context: aws
