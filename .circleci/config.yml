@@ -1,27 +1,24 @@
 version: 2.1
 
-# <!> Es importante el orden de ejecucion <!>
-
-commands:
-  install-cli:
-    steps:
-      - run: echo install cli
-      # Descarga todo el repo donde este
-      # - checkout
+# Variables de entorno
 
 jobs:
-  install-dependencies:
+  saluda:
     docker:
-      - image: cimg/base:stable
+      - image: ubuntu:latest
     steps:
-      - install-cli
-      # Se puede llamar como step de un comando o de un job
-      - checkout:
-          # Puedes añadir un path donde se descargara tu codigo
-          path: code/
-      - run: ls -lha
+      - run: echo hola $NOMBRE
+      # Variable de entorno a nivel step
+      environment:
+        NOMBRE: pako
+      # Otra forma de escribir un run
+      - run:
+          command: echo mi id de job es $CIRCLE_WORKFLOW_JOB_ID
+          # Dar un nombre
+          name: imprime el id
 
 workflows:
-  install-workflow:
+  saluda_ahora:
     jobs:
-      - install-dependencies
+      - saluda:
+          name: un_saludo
