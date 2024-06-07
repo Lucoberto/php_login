@@ -8,9 +8,9 @@ jobs:
       - image: ubuntu:latest
     steps:
       - run: echo hola $NOMBRE
-      # Variable de entorno a nivel step
-      environment:
-        NOMBRE: pako
+        # Variable de entorno a nivel step
+        environment:
+          NOMBRE: pako
       # Otra forma de escribir un run
       - run:
           command: echo mi id de job es $CIRCLE_WORKFLOW_JOB_ID
